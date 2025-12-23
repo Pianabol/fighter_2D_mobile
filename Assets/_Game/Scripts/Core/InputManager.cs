@@ -66,14 +66,21 @@ public class InputManager : MonoBehaviour
         };
     }
  
+    
     private void OnEnable()
     {
-        _gameControls.Enable();
+        if (_gameControls != null) // VARSA aç
+        {
+            _gameControls.Enable();
+        }
     }
 
-     
+    // Oyun kapanınca veya obje silinince dinlemeyi kapat
     private void OnDisable()
     {
-        _gameControls.Disable();
+        if (_gameControls != null) // VARSA kapat (Hatalı kısım buydu)
+        {
+            _gameControls.Disable();
+        }
     }
 }

@@ -55,10 +55,7 @@ public class PlayerController : MonoBehaviour
 
         // TEST İÇİN GEÇİCİ  
         // Zıplayınca zaman yavaşlasın
-        TimeManager.Instance.TriggerSlowMotion();
         
-        // 1 saniye sonra zamanı normale döndür (Invoke komutu)
-        Invoke("ResetTime", 1f); 
     }
 
     // Zamanı düzeltmek için yardımcı fonksiyon
