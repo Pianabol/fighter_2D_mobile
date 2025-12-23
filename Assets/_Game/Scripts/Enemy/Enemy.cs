@@ -4,7 +4,8 @@ public class Enemy : MonoBehaviour
 {
     [Header("Base Ayarlar")]
     public float attackRange = 3f; 
-    
+    public int damagePower = 1; // YENİ: Düşmanın vuracağı hasar
+
     protected Transform player;      // 'protected' diğer enemi sınıfları için
     protected bool hasAttacked = false; 
     protected bool isVulnerable = false;
@@ -53,8 +54,9 @@ public class Enemy : MonoBehaviour
         Debug.Log(" Düşman Saldırıyor!");
         spriteRenderer.color = Color.yellow; 
         TimeManager.Instance.TriggerSlowMotion();
+        float scaledTime = 3f * TimeManager.Instance.slowMotionFactor;
 
-        Invoke("MissedOpportunity", 1.5f); 
+        Invoke("MissedOpportunity", scaledTime); 
     }
 
     // BURASI : Tank düşmanı burayı değiştirecek (Override)
@@ -101,7 +103,7 @@ public class Enemy : MonoBehaviour
                 
                 if (playerHealth != null)
                 {
-                    playerHealth.TakeDamage(1); 
+                    playerHealth.TakeDamage(damagePower);
                 }
                 else
                 {

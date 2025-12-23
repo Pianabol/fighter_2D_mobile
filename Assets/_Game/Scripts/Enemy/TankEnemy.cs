@@ -5,6 +5,11 @@ public class TankEnemy : Enemy
     [Header("Tank Ayarları")]
     public int health = 2; // Bu düşmanın 2 canı var!
 
+    protected override void Start()
+    {
+        base.Start(); 
+        damagePower = 2; // Tank 2 can götürsün
+    }
     // Babasındaki HandleTap fonksiyonunu eziyoruz (Override)
     protected override void HandleTap()
     {

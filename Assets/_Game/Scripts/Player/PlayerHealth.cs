@@ -15,6 +15,18 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
+        //Ne çok hata verdi be
+        // Singleton (Instance) yerine, sahnedeki UIManager'ı zorla bulup getiriyoruz.
+        UIManager ui = FindObjectOfType<UIManager>();
+        if (ui != null)
+        {
+            ui.UpdateHealth(currentHealth);
+        }
+        else
+        {
+            Debug.LogError("HATA: Sahnede UIManager bulunamadı!");
+        }
+
         Debug.Log($" HASAR ALDIN! Kalan Can: {currentHealth}");
 
         // Ekran sallantısı veya kırmızı efekt ilerde buraya eklenecek
